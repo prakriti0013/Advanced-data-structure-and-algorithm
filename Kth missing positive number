@@ -1,0 +1,17 @@
+class Solution(object):
+    def findKthPositive(self, arr, k):
+        """
+        :type arr: List[int]
+        :type k: int
+        :rtype: int
+        """
+        prev = 0 
+        for x in arr:
+            missing = x - prev - 1
+            if k <= missing:
+                return prev + k
+            k -= missing
+            prev = x
+        
+        return arr[-1] + k
+        
